@@ -54,10 +54,10 @@ If you don't want to sign up for a new account, consider using the following gue
 ___
 ## Prerequisites for this project
 **Install the backend app**
-- [App Backend](https://github.com/LewisDuda/vue-todo-list-login.git)
+- [App Backend](https://github.com/LewisDuda/express-firebase)
 
 ```
-$ git clone https://github.com/LewisDuda/vue-todo-list-login.git
+$ git clone https://github.com/LewisDuda/express-firebase.git
 ```
 
 
