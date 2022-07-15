@@ -1,0 +1,43 @@
+<div class="item" v-for="todo in todos" :key="todo.index">
+	
+	<!-- CONTROL ISCOMPLETED START -->
+	<i class="fa-solid fa-circle-check" v-if="todo.done" @click="updateCompleted(todo)"></i>
+	<i class="fa-solid fa-clock-rotate-left" v-else @click="updateCompleted(todo)"> </i>
+	<!-- CONTROL ISCOMPLETED END -->
+
+	<!-- CONTROL ISEDIT START -->
+	<input
+		v-focus
+		v-if="todo.isEdit"
+		type="text"
+		v-model.trim="editItem"
+		@keyup.enter="submitEdit(todo)"
+		@keyup.esc="cancelEidt(todo)"
+		@blur="cancelEidt(todo)"
+	/>
+	<p
+		v-else
+		:class="[todo.done ? 'completed' : 'active']"
+		@dblclick="editHandler(todo)">
+		{{ todo.Content }}
+	</p>
+	<!-- CONTROL ISEDIT END -->
+
+	<i class="fa-solid fa-trash-arrow-up" @click="deletehandler(todo)"></i> 
+
+</div>
+<teleport to="body">
+	<Popup
+	class="deleteDialog"
+	:showDialog="isShowDeleteDialog"
+	cancelText="CNACEL"
+	confirmText="CONFIRM"
+	@cancel="cancelDelete"
+	@confirm="confirmDelete"				
+>
+	<fieldset>
+		<legend>DELETE TODOLIST</legend>
+		<p>Are you sure you want to delete the "{{ deleteItem.Content }}" plan?</p>
+	</fieldset>
+</Popup>
+</teleport>

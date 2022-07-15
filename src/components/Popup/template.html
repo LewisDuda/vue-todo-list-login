@@ -1,0 +1,24 @@
+<div class="popup">
+	<transition name="fade" apper>
+		<div
+			class="dialog-overlay"
+			v-if="showDialog"
+			@click="$emit('cancel')"
+		></div>
+	</transition>
+	<transition name="slide" apper>
+		<div class="dialog" v-if="showDialog">
+			<slot></slot>
+			<button
+				type="submit"
+				@click.prevent="$emit('confirm')"
+				class="confirm"
+            >
+				<h2 v-text="confirmText"></h2>
+			</button>
+			<button @click="$emit('cancel')" class="cancel">
+				<h2 v-text="cancelText"></h2>
+			</button>
+		</div>
+	</transition>
+</div>
